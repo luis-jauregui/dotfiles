@@ -1,0 +1,104 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet log "Log to the console" b
+console.log(${1});
+endsnippet
+
+snippet let "Variable Let" b
+let ${1:name} = ${2}
+endsnippet
+
+snippet const "Variable Const" b
+const ${1:name} = ${2}
+endsnippet
+
+snippet array "Object Array" b
+const ${1:name} = [${2}];
+endsnippet
+
+snippet object "Object" b
+const ${1:name} = {
+	${2:key}: ${3:value},
+	${4}
+}
+endsnippet
+
+snippet function "Function Statement" b
+function ${1:name} (${2:params}) {
+	${3}
+}
+endsnippet
+
+snippet if "If Statement" b
+if (${1:condition}) {
+	${2}
+}
+endsnippet
+
+snippet ifelse "If-Else Statement" b
+if (${1:condition}) {
+	${2}
+} else {
+	${3}
+}
+endsnippet
+
+snippet switch "Switch Statement" b
+switch (${1:key}) {
+	case ${2:value}:
+		${3}
+		break;
+	default:
+		break;
+}
+endsnippet
+
+snippet while "While Statement" b
+while (${1:condition}) {
+	${2}
+}
+endsnippet
+
+snippet dowhile "Do-While Statement" b
+do {
+	${2}
+} while (${1:condition});
+endsnippet
+
+snippet for "For Loop" b
+for (let ${1:index} = 0; ${1:index} < ${2:array}.length; ${1:index}++) {
+	const ${3:element} = ${2:array}[${1:index}];
+	${4}
+}
+endsnippet
+
+snippet forof "For-Of Loop" b
+for (const ${1:iterator} of ${2:object}) {
+	${3}
+}
+endsnippet
+
