@@ -1,0 +1,7 @@
+pcall(require, "impatient")
+require("disable_builtin")
+require("luis.plugins").setup()
+require("base")
+require("maps")
+require("highlight")
+require("globals")

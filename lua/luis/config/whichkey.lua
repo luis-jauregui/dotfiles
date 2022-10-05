@@ -1,0 +1,98 @@
+local M = {}
+
+
+local utils = require "luis.utils"
+
+local ok, whichkey = pcall(require, "which-key")
+if not ok then
+  utils.error_plugin("whichkey")
+  return
+end
+
+local conf = {
+  window = {
+    border   = "single",
+    position = "bottom",
+  },
+}
+
+whichkey.setup(conf)
+
+
+local opts = {
+  mode    = "n", -- Normal mode
+  prefix  = "<leader>",
+  buffer  = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent  = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait  = false, -- use `nowait` when creating keymaps
+}
+
+local function normal_keymap()
+  local keymaps = {
+
+    ["w"] = { "<cmd>update!<CR>", "Save" },
+    ["q"] = { "<cmd>q!<CR>", "Quit" },
+
+    a = {
+      name = "Angular",
+      c = { [[ <Esc><Cmd>lua require('luis.utils.term').component()<CR>]], "Create component" },
+      m = { [[ <Esc><Cmd>lua require('luis.utils.term').module()<CR>]], "Create module" },
+      s = { [[ <Esc><Cmd>lua require('luis.utils.term').service()<CR>]], "Create service" },
+      t = { [[ <Esc><Cmd>lua require('luis.utils.term').tree()<CR>]], "Project structure" },
+    },
+
+    h = {
+      name = "Help",
+      c = { [[ <Esc><Cmd>lua require('luis.utils.cht').cht_input()<CR>]], "Code" },
+      s = { [[ <Esc><Cmd>lua require('luis.utils.term').so()<CR>]], "Stack Overflow" },
+      -- x = { "<cmd>lua require('luis.utils.term').project_info_toggle()<CR>", "Project Info" },
+      k = { "<cmd>lua require('luis.utils.term').system_info_toggle()<CR>", "System Info" },
+      -- g = { "<cmd>lua require('luis.utils.term').git_commit_toggle()<CR>", "Conventional Commit" },
+    },
+
+    s = {
+      name = "Server",
+      a = { "<cmd>Ng<CR>", "Run Angular Server" },
+      l = { "<cmd>Live<CR>", "Run Live Server" },
+      v = { "<cmd>Run<CR>", "Run Vite Server" },
+    },
+
+    b = {
+      name = "Buffer",
+      t = { "<cmd>BDelete this<CR>", "Delete this current buffer" },
+      h = { "<cmd>BDelete hidden<CR>", "Delete all non-visible buffers" },
+      n = { "<cmd>BDelete nameless<CR>", "Delete buffers without name" },
+    },
+
+    p = {
+      name = "Packer",
+      i = { "<cmd>PackerInstall<CR>", "Install" },
+      c = { "<cmd>PackerClean<CR>", "Clean" },
+      s = { "<cmd>PackerStatus<CR>", "Status" },
+      y = { "<cmd>PackerSync<CR>", "Sync" },
+    },
+
+    g = {
+      name = "Git",
+      l = { "<cmd>lua require('luis.utils.term').git_client_toggle()<CR>", "Git TUI" },
+      h = { "<cmd>Gitsigns preview_hunk<CR>", "Gitsigns - Preview Hunk" }
+    },
+
+    f = {
+      name = "Find",
+      a = { "<cmd>lua require('luis.telescope.builtins').setup().project_files()<CR>", "Find file" },
+      b = { "<cmd>lua require('luis.telescope.builtins').setup().project_all()<CR>", "Find project" },
+      c = { "<cmd>lua require('luis.telescope.builtins').setup().search_dotfiles()<CR>", "Find dotfile" }
+    }
+  }
+
+  whichkey.register(keymaps, opts)
+end
+
+
+function M.setup()
+  normal_keymap()
+end
+
+return M
