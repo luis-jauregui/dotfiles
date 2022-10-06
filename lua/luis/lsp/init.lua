@@ -94,12 +94,16 @@ end
 
 local diagnostics_active = true
 
+local utils = require "luis.utils"
+
 function M.toggle_diagnostics()
   diagnostics_active = not diagnostics_active
   if diagnostics_active then
     vim.diagnostic.show()
+    utils.info("Enabled diagnostics", "Diagnostic")
   else
     vim.diagnostic.hide()
+    utils.warn("Disabled diagnostics", "Diagnostic")
   end
 end
 
