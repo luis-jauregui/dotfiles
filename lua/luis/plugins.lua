@@ -37,7 +37,6 @@ function M.setup()
       end
     }
 
-
     -- LSP
 
     use {
@@ -51,6 +50,7 @@ function M.setup()
         "mason-lspconfig.nvim",
         "lua-dev.nvim",
         "typescript.nvim",
+        "nvim-navic"
       },
       config = function()
         require("luis.lsp").setup()
@@ -67,15 +67,14 @@ function M.setup()
           config = function()
             require("luis.config.lsp_signature").setup()
           end
+        },
+        {
+          "SmiteshP/nvim-navic",
+          config = function ()
+            require("nvim-navic").setup()
+          end
         }
       },
-    }
-
-    use {
-      "SmiteshP/nvim-navic",
-      config = function ()
-        require("nvim-navic").setup()
-      end
     }
 
     use {
@@ -154,7 +153,6 @@ function M.setup()
     }
 
     use {
-
       "numToStr/Comment.nvim",
       keys = { "gc", "gcc", "gbc" },
       config = function()
@@ -254,16 +252,6 @@ function M.setup()
         require("luis.config.bufferline").setup()
       end
     }
-
-    -- use {
-    --   "SmiteshP/nvim-gps",
-    --   requires = { "nvim-treesitter/nvim-treesitter" },
-    --   module = "nvim-gps",
-    --   wants = "nvim-treesitter",
-    --   config = function()
-    --     require("nvim-gps").setup()
-    --   end
-    -- }
 
     use {
       "glepnir/lspsaga.nvim",
