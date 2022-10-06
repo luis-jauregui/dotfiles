@@ -28,6 +28,7 @@ Requires Neovim (>= 8.0)
 - [NPM](#npm)
   * [NPM Dependencies](#npm-dependencies)
 - [Neovim](#neovim)
+- [Lazygit](#lazygit)
 - [All dependencies](#all-dependencies)
 
 
@@ -108,6 +109,19 @@ Clone in this path `C:\Users\YOUR_PORFILE\AppData\Local`
 
 ````
 git clone https://github.com/luis-jauregui/dotfiles.git
+````
+
+## Lazygit
+
+Add config in this file `C:\Users\YOUR_PORFILE\AppData\Roaming\lazygit\config.yml`
+
+````
+customCommands:
+  - key: "Z"
+    command: "git cz"
+    context: "files"
+    loadingText: "opening commitizen commit tool"
+    subprocess: true
 ````
 
 ## All dependencies
