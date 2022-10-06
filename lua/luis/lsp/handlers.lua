@@ -30,6 +30,7 @@ function M.setup()
         prefix = '●'
       },
       update_in_insert = true,
+      underline = false,
       float = {
         source = "always", -- Or "if_many"
         border = "rounded",
