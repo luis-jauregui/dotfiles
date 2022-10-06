@@ -57,23 +57,6 @@ function M.on_attach(client, bufnr)
     navic.attach(client, bufnr)
   end
 
-  -- better
-  if client.name == 'tsserver' then
-    client.server_capabilities.documentFormattingProvider = false
-  end
-
-  if client.name == 'sumneko_lua' then
-    client.server_capabilities.documentFormattingProvider = false
-  end
-
-  if client.name == 'jsonls' then
-    client.server_capabilities.documentFormattingProvider = false
-  end
-
-  if client.name == 'html' then
-    client.server_capabilities.documentFormattingProvider = false
-  end
-
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

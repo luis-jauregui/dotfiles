@@ -25,23 +25,23 @@ function M.format()
     local view = vim.fn.winsaveview()
 
     -- nvim 0.7
-    vim.lsp.buf.formatting_sync(nil, 2000)
+    -- vim.lsp.buf.formatting_sync(nil, 2000)
 
     -- nvim 0.8
-    -- vim.lsp.buf.format {
-    --
-    --   async = true,
-    --   filter = function(client)
-    --
-    --     return client.name ~= "tsserver"
-    --       and client.name ~= "jsonls"
-    --       and client.name ~= "html"
-    --       and client.name ~= "sumneko_lua"
-    --       and client.name ~= "jdt.ls"
-    --     and client.name ~= "kotlin_language_server"
-    --
-    --   end,
-    -- }
+    vim.lsp.buf.format {
+
+      async = true,
+      filter = function(client)
+
+        return client.name ~= "tsserver"
+          and client.name ~= "jsonls"
+          and client.name ~= "html"
+          and client.name ~= "sumneko_lua"
+          and client.name ~= "jdt.ls"
+        and client.name ~= "kotlin_language_server"
+
+      end,
+    }
 
     vim.fn.winrestview(view)
     print "Buffer formatted"
