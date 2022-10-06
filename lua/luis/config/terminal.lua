@@ -1,6 +1,5 @@
 local M = {}
 
-
 function M.setup()
 
   local utils = require "luis.utils"
@@ -21,7 +20,7 @@ function M.setup()
     start_in_insert = true,
     persist_size    = true,
     direction       = "horizontal",
-    shell           = "pwsh"
+    shell           = "pwsh.exe -nologo"
   }
 
   function _G.set_terminal_keymaps()
@@ -30,10 +29,9 @@ function M.setup()
   end
 
   vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-  vim.api.nvim_command [[command! -count=1 Live lua require'toggleterm'.exec("live-server",    <count>, 12)]]
-  vim.api.nvim_command [[command! -count=1 Run lua require'toggleterm'.exec("yarn dev",    <count>, 12)]]
-  vim.api.nvim_command [[command! -count=1 Ng lua require'toggleterm'.exec("ng serve -o",    <count>, 12)]]
-
+  -- vim.api.nvim_command [[command! -count=1 Live lua require'toggleterm'.exec("live-server",    <count>, 12)]]
+  -- vim.api.nvim_command [[command! -count=1 Run lua require'toggleterm'.exec("yarn dev",    <count>, 12)]]
+  -- vim.api.nvim_command [[command! -count=1 Ng lua require'toggleterm'.exec("ng serve -o",    <count>, 12)]]
 end
 
 return M

@@ -51,12 +51,12 @@ local function normal_keymap()
       -- g = { "<cmd>lua require('luis.utils.term').git_commit_toggle()<CR>", "Conventional Commit" },
     },
 
-    s = {
-      name = "Server",
-      a = { "<cmd>Ng<CR>", "Run Angular Server" },
-      l = { "<cmd>Live<CR>", "Run Live Server" },
-      v = { "<cmd>Run<CR>", "Run Vite Server" },
-    },
+    -- s = {
+    --   name = "Server",
+    --   a = { "<cmd>Ng<CR>", "Run Angular Server" },
+    --   l = { "<cmd>Live<CR>", "Run Live Server" },
+    --   v = { "<cmd>Run<CR>", "Run Vite Server" },
+    -- },
 
     b = {
       name = "Buffer",
