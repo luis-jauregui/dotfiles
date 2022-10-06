@@ -247,6 +247,7 @@ function M.setup()
     use {
       "akinsho/nvim-bufferline.lua",
       event = "BufReadPre",
+      tag = "v2.*",
       wants = "nvim-web-devicons",
       config = function ()
         require("luis.config.bufferline").setup()

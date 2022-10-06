@@ -14,6 +14,12 @@ function M.setup()
 
     options = {
 
+      hover = {
+          enabled = true,
+          delay = 200,
+          reveal = {'close'}
+      },
+
       custom_filter = function (buf_number, buf_numbers)
         local tab_num = 0
 
@@ -37,7 +43,7 @@ function M.setup()
       mode                    = "tabs",
       separator_style         = "slant" or "padded_slant",
       always_show_bufferline  = false,
-      show_buffer_close_icons = false,
+      show_buffer_close_icons = true,
       show_close_icon         = false,
       color_icons             = true,
       diagnostics             = "nvim_lsp",
