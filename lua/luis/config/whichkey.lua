@@ -1,6 +1,5 @@
 local M = {}
 
-
 local utils = require "luis.utils"
 
 local ok, whichkey = pcall(require, "which-key")

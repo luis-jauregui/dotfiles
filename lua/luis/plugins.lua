@@ -321,7 +321,7 @@ function M.setup()
       config = function()
         require("luis.dap").setup()
       end,
-      disable = true
+      disable = false
     }
 
     -- Git
