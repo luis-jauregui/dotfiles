@@ -77,8 +77,15 @@ function M.setup()
       mappings = {
         list = {
           { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+          { key = "<S-n>", cb = tree_cb "create" },
+          { key = "<S-r>", cb = tree_cb "rename" },
+          { key = "<S-h>", cb = tree_cb "split" },
+          { key = "<S-v>", cb = tree_cb "vsplit" },
+          { key = "<S-t>", cb = tree_cb "tabnew" },
+          { key = "?", cb = tree_cb "toggle_help" },
           { key = "h", cb = tree_cb "close_node" },
-          { key = "v", cb = tree_cb "vsplit" },
+          { key = "<Tab>", action = "" },
+          { key = "s", action = "" },
           { key = "s", action = "" },
         },
       },
