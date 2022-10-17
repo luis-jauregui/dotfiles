@@ -37,6 +37,16 @@ function M.setup()
       end
     }
 
+
+    use {
+      "tyru/open-browser.vim",
+      opt     = true,
+      keys    = [[C-b]],
+      event   = "BufReadPre",
+      cmd     = { "OpenBrowser", "OpenBrowserSearch" },
+      disable = false
+    }
+
     -- LSP
 
     use {
