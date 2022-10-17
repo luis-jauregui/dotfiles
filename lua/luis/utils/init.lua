@@ -80,6 +80,72 @@ function M.quit()
   end
 end
 
+function M.search_url()
+  vim.ui.input({
+    prompt = "URL"
+  }, function (url)
+      local cmd = ""
+      if url == "" or not url then
+        return
+      else
+        cmd = "OpenBrowser" .. " " .. url
+      end
+      vim.cmd(cmd)
+  end)
+end
+
+function M.search_youtube()
+  vim.ui.input({
+    prompt = "search in Youtube"
+  }, function (url)
+      local cmd = ""
+      if url == "" or not url then
+        return
+      else
+        cmd = "OpenBrowserSearch" .. " -youtube " .. url
+      end
+      vim.cmd(cmd)
+  end)
+end
+
+function M.search_google()
+  vim.ui.input({
+    prompt = "search in Google"
+  }, function (url)
+      local cmd = ""
+      if url == "" or not url then
+        return
+      else
+        cmd = "OpenBrowserSearch" .. " " .. url
+      end
+      vim.cmd(cmd)
+  end)
+end
+
+function M.open_browser()
+  vim.ui.select({
+    "📖 Open URL",
+    "🔍 Search in Google",
+    "🔍 Search in Youtube",
+  }, {
+    prompt = "Open Browser",
+  }, function(option, i)
+
+      local cmd = ""
+      if i == 1 then
+        cmd = ":lua require('luis.utils').search_browser_url()"
+      elseif i == 2 then
+        cmd = ":lua require('luis.utils').search_google()"
+      elseif i == 3 then
+        cmd = ":lua require('luis.utils').search_youtube()"
+      else
+        return
+      end
+      vim.cmd(cmd)
+  end)
+end
+
+
 -- function M.nvim_version(val)
 --   local version = (vim.version().major .. "." .. vim.version().minor) + 0.0
 --   val = val or 0.7
