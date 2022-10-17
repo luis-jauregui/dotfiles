@@ -12,8 +12,6 @@ function M.setup(reloader)
 
     TelescopeMapArgs[map_key] = options or {}
 
-
-
     local mode = "n"
     local rhs = string.format("<cmd>lua R('luis.telescope.builtins').setup(reloader)['%s'](TelescopeMapArgs['%s'])<CR>", f, map_key)
 
@@ -55,6 +53,13 @@ function M.setup(reloader)
   -- map_tele("<leader>fc", "find_controller")
   -- map_tele("<leader>fm", "find_models")
   -- map_tele("<leader>fv", "find_views")
+
+  vim.api.nvim_set_keymap(
+    "v",
+    "<leader>rr",
+    "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+    { noremap = true }
+  )
 
   return map_tele
 end

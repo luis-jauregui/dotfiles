@@ -129,6 +129,21 @@ function M.setup()
       end
     }
 
+    -- Refactor
+
+    use {
+      "ThePrimeagen/refactoring.nvim",
+      ft     = { "javascript", "typescript" },
+      event  = "BufReadPre",
+      opt    = true,
+      keys   = { [[<leader>r]] },
+      module = { "refactoring", "telescope" },
+      wants  = { "telescope.nvim" },
+      config = function()
+        require("luis.config.refactoring").setup()
+      end,
+    }
+
     -- Cmp
 
     use {

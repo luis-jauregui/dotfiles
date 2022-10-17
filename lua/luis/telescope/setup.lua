@@ -78,11 +78,13 @@ function M.setup(reloader)
         },
       },
     },
+
   })
 
   _ = require("telescope").load_extension("file_browser")
   _ = require("telescope").load_extension("project")
   _ = require("telescope").load_extension("tele_tabby")
+  _ = require("telescope").load_extension("refactoring")
   -- _ = require("telescope").load_extension("projects")
 end
 
