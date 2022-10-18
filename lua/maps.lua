@@ -20,10 +20,6 @@ keymap("v", "<leader>=", ":EasyAlign =<CR>", default_opts)
 keymap("n", "<leader>w", ":w<CR>", default_opts)
 keymap("n", "<leader>q", ":q<CR>", default_opts)
 
--- Better escape using jk in insert and terminal mode
-keymap("i", "jj", "<ESC>", default_opts)
-
-
 keymap("n", "n", "nzz", default_opts)
 keymap("n", "N", "Nzz", default_opts)
 

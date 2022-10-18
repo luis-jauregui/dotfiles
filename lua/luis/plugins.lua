@@ -37,6 +37,17 @@ function M.setup()
       end
     }
 
+    use {
+      "max397574/better-escape.nvim",
+      event  = { "InsertEnter" },
+      config = function()
+        require("better_escape").setup {
+          mapping = { "jj" },
+          timeout = vim.o.timeoutlen,
+          keys    = "<ESC>",
+        }
+      end,
+    }
 
     use {
       "tyru/open-browser.vim",
