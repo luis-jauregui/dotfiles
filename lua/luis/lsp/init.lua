@@ -20,6 +20,7 @@ local servers = {
   },
   cssls = {},
   sumneko_lua = {
+
     settings = {
       Lua = {
 
@@ -82,7 +83,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   },
 }
 
-M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities) -- for nvim-cmp
+M.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities) -- for nvim-cmp
 
 local opts = {
   on_attach = M.on_attach,
