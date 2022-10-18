@@ -341,11 +341,13 @@ function M.setup()
 
     use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" }, disable = false }
     use {
-      "ggandor/lightspeed.nvim" ,
-      keys = { "s", "S", "f", "F", "t", "T" },
+      "beauwilliams/focus.nvim",
+      cmd    = { "FocusToggle", "FocusMaxOrEqual" },
+      module = "focus",
       config = function()
-        require("lightspeed").setup {}
+        require("focus").setup { hybridnumber = true }
       end,
+      disable = false,
     }
 
     -- Debug
