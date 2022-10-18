@@ -2,13 +2,20 @@ local M = {}
 
 function M.setup(servers, options)
 
+  local utils = require "luis.utils"
+
   local ok_lspconfig, lspconfig = pcall(require, "lspconfig")
   if not ok_lspconfig then
+    utils.error_plugin("lspconfig")
+    return
+  end
+
     return
   end
 
   local ok_mason, mason = pcall(require, "mason")
   if not ok_mason then
+    utils.error_plugin("mason")
     return
   end
 
