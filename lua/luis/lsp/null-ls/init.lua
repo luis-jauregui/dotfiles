@@ -1,10 +1,10 @@
 local M = {}
 
-local utils = require "luis.utils"
+local utils_s = require "luis.utils"
 local ok, nls = pcall(require, "null-ls")
 
 if not ok then
-  utils.error_plugin("null-ls")
+  utils_s.error_plugin("null-ls")
   return
 end
 
