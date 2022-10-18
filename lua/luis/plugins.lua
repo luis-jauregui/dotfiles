@@ -6,22 +6,21 @@ function M.setup()
 
   local function packer_init()
 
-      local fn = vim.fn
-      local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    local fn = vim.fn
+    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
-      if fn.empty(fn.glob(install_path)) > 0 then
+    if fn.empty(fn.glob(install_path)) > 0 then
 
-        print("installing packer ...")
+      print("installing packer ...")
 
-        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-        vim.cmd [[packadd packer.nvim]]
+      fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+      vim.cmd [[packadd packer.nvim]]
 
-        print("packer installed ...")
+      print("packer installed ...")
 
-        packer_boostrap = true
+      packer_boostrap = true
 
-      end
-
+    end
   end
 
   local function plugins(use)
@@ -62,7 +61,7 @@ function M.setup()
 
     use {
       "neovim/nvim-lspconfig",
-      opt = true,
+      opt   = true,
       event = { "BufReadPre" },
       wants = {
         "null-ls.nvim",
@@ -109,14 +108,14 @@ function M.setup()
 
     use {
       "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
-      ft = "markdown",
-      cmd = { "MarkdownPreview" },
+      run      = function() vim.fn["mkdp#util#install"]() end,
+      ft       = "markdown",
+      cmd      = { "MarkdownPreview" },
       requires = {
         "zhaozg/vim-diagram",
         {
           "vimwiki/vimwiki",
-          ft = "vimwiki",
+          ft  = "vimwiki",
           cmd = { "VimwikiIndex", "VimwikiTabIndex" }
         }
       }
@@ -124,7 +123,7 @@ function M.setup()
 
     use {
       "NvChad/nvim-colorizer.lua",
-      ft = { "html", "css" },
+      ft     = { "html", "css" },
       config = function ()
         require("colorizer").setup {
           filetypes = { "html", "css" },
@@ -134,9 +133,9 @@ function M.setup()
 
     use {
       "max397574/colortils.nvim",
-      opt = true,
-      ft = { "html", "css" },
-      cmd = "Colortils",
+      opt    = true,
+      ft     = { "html", "css" },
+      cmd    = "Colortils",
       config = function()
         require("colortils").setup()
       end,
@@ -168,12 +167,12 @@ function M.setup()
 
     use {
       "hrsh7th/nvim-cmp",
-      event = "InsertEnter",
-      opt = true,
+      event  = "InsertEnter",
+      opt    = true,
       config = function ()
         require("luis.config.cmp").setup()
       end,
-      wants = { "LuaSnip" },
+      wants    = { "LuaSnip" },
       requires = {
         "hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for buffer words
         "hrsh7th/cmp-buffer", -- nvim-cmp source for neovim's built-in LSP
@@ -191,7 +190,7 @@ function M.setup()
 
     use {
       "folke/which-key.nvim",
-      event = "VimEnter",
+      event  = "VimEnter",
       config = function ()
         require("luis.config.whichkey").setup()
       end
@@ -199,7 +198,7 @@ function M.setup()
 
     use {
       "numToStr/Comment.nvim",
-      keys = { "gc", "gcc", "gbc" },
+      keys   = { "gc", "gcc", "gbc" },
       config = function()
         require("Comment").setup()
       end
@@ -209,9 +208,9 @@ function M.setup()
 
     use {
       "nvim-treesitter/nvim-treesitter",
-      opt = true,
-      event = "BufRead",
-      run = ":TSUpdate",
+      opt    = true,
+      event  = "BufRead",
+      run    = ":TSUpdate",
       config = function()
         require("luis.config.treesitter").setup()
       end,
@@ -227,9 +226,9 @@ function M.setup()
 
     use {
       "windwp/nvim-ts-autotag",
-      opt = true,
-      wants = "nvim-treesitter",
-      event = "InsertEnter",
+      opt    = true,
+      wants  = "nvim-treesitter",
+      event  = "InsertEnter",
       config = function()
         require("nvim-ts-autotag").setup({ enable = true })
       end,
@@ -245,9 +244,9 @@ function M.setup()
 
     use {
       "windwp/nvim-autopairs",
-      opt = true,
-      event = "InsertEnter",
-      wants = "nvim-treesitter",
+      opt    = true,
+      event  = "InsertEnter",
+      wants  = "nvim-treesitter",
       module = { "nvim-autopairs" },
       config = function ()
         require("nvim-autopairs").setup({
@@ -259,8 +258,8 @@ function M.setup()
 
     use {
       "nvim-lualine/lualine.nvim",
-      event = "VimEnter",
-      after = "nvim-treesitter",
+      event  = "VimEnter",
+      after  = "nvim-treesitter",
       config = function()
         require("luis.config.lualine").setup()
       end,
@@ -269,8 +268,8 @@ function M.setup()
 
     use {
       "mg979/vim-visual-multi",
-      opt = true,
-      keys = { [[<C-n>]] },
+      opt    = true,
+      keys   = { [[<C-n>]] },
       branch = "master"
     }
     use { "tpope/vim-surround", event = "InsertEnter" }
@@ -282,8 +281,8 @@ function M.setup()
 
     use {
       "akinsho/toggleterm.nvim",
-      keys = { [[<C-t>]] },
-      cmd = { "ToggleTerm", "TermExec" },
+      keys   = { [[<C-t>]] },
+      cmd    = { "ToggleTerm", "TermExec" },
       config = function ()
         require("luis.config.terminal").setup()
       end
@@ -291,9 +290,9 @@ function M.setup()
 
     use {
       "akinsho/nvim-bufferline.lua",
-      event = "BufReadPre",
-      tag = "v2.*",
-      wants = "nvim-web-devicons",
+      event  = "BufReadPre",
+      tag    = "v2.*",
+      wants  = "nvim-web-devicons",
       config = function ()
         require("luis.config.bufferline").setup()
       end
@@ -309,8 +308,8 @@ function M.setup()
 
     use {
       "kyazdani42/nvim-tree.lua",
-      opt = true,
-      wants = "nvim-web-devicons",
+      opt    = true,
+      wants  = "nvim-web-devicons",
       module = "nvim-tree",
       config = function()
         require("luis.config.nvimtree").setup()
@@ -340,6 +339,7 @@ function M.setup()
     use { "chaoren/vim-wordmotion" }
 
     use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" }, disable = false }
+
     use {
       "beauwilliams/focus.nvim",
       cmd    = { "FocusToggle", "FocusMaxOrEqual" },
@@ -354,12 +354,13 @@ function M.setup()
 
     use {
        "mfussenegger/nvim-dap",
-      opt = true,
-      event = "BufReadPre",
-      module = { "dap" },
-      wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "which-key.nvim" },
+      opt      = true,
+      -- event = "BufReadPre",
+      keys     = { [[<leader>d]] },
+      module   = { "dap" },
+      wants    = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "which-key.nvim" },
       requires = {
-        "Pocco81/DAPInstall.nvim",
+        -- "Pocco81/DAPInstall.nvim",
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
         "nvim-telescope/telescope-dap.nvim",
@@ -369,17 +370,17 @@ function M.setup()
       config = function()
         require("luis.dap").setup()
       end,
-      disable = false
+      disable = true
     }
 
     -- Git
 
     use {
       "lewis6991/gitsigns.nvim",
-      event = "BufReadPre",
-      wants = "plenary.nvim",
+      event    = "BufReadPre",
+      wants    = "plenary.nvim",
       requires = { "nvim-lua/plenary.nvim" },
-      config = function()
+      config   = function()
         require("luis.config.gitsigns").setup()
       end
     }
@@ -409,15 +410,16 @@ function M.setup()
   packer_init()
 
   local packer = require "packer"
+  local utils = require "packer.util"
   pcall(require, "impatient")
 
-  packer.startup(plugins)
   packer.startup({ plugins, config = {
     display = {
       open_fn = function()
         return utils.float({ border = 'single' })
       end
     }
+  }})
 
 end
 

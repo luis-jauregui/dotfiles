@@ -9,7 +9,7 @@ dressing.setup({
     winblend = 100,
     mappings = {
       n = {
-        ["q"] = "Close",
+        ["q"]    = "Close",
         ["<CR>"] = "Confirm",
       },
     },
