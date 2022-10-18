@@ -1,6 +1,8 @@
+local utils = require "luis.utils"
+
 local ok, dressing = pcall(require, "dressing")
 if not ok then
-    return
+  utils.error_plugin("dressing")
 end
 
 dressing.setup({
