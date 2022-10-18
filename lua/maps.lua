@@ -6,6 +6,8 @@ vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- browser
+keymap("n", "<C-b>", "<CMD>lua require('luis.utils').open_browser()<CR>", default_opts)
 
 -- nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", default_opts)
