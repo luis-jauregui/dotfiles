@@ -16,21 +16,33 @@ function M.setup()
 
   -- LSP handlers configuration
   local lsp = {
+
     float = {
       focusable = true,
       style = "minimal",
       border = "rounded",
     },
 
+    publishDiagnostics = {
+      underline = false,
+      update_in_insert = false,
+      virtual_text = { spacing = 4, prefix = "●"},
+      severity_sort = true,
+    },
+
     diagnostic = {
+
       signs = {
         active = signs,
       },
+
       virtual_text = {
-        prefix = '●'
+        prefix = '●',
       },
-      update_in_insert = true,
+
+      update_in_insert = false,
       underline = false,
+
       float = {
         source = "always", -- Or "if_many"
         border = "rounded",
@@ -44,7 +56,7 @@ function M.setup()
   -- Diagnostic configuration
   vim.diagnostic.config(lsp.diagnostic)
 
-  -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, lsp.publishDiagnostics)
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, lsp.publishDiagnostics)
 
   -- Hover configuration
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp.float)
