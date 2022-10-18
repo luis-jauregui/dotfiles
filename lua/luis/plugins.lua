@@ -412,6 +412,12 @@ function M.setup()
   pcall(require, "impatient")
 
   packer.startup(plugins)
+  packer.startup({ plugins, config = {
+    display = {
+      open_fn = function()
+        return utils.float({ border = 'single' })
+      end
+    }
 
 end
 
