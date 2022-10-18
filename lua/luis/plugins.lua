@@ -71,9 +71,10 @@ function M.setup()
         "mason-lspconfig.nvim",
         "lua-dev.nvim",
         "typescript.nvim",
-        "nvim-navic"
+        "nvim-navic",
+        "symbols-outline.nvim",
       },
-      config = function()
+      config   = function()
         require("luis.lsp").setup()
       end,
       requires = {
@@ -94,6 +95,14 @@ function M.setup()
           config = function ()
             require("nvim-navic").setup()
           end
+        },
+        {
+          "simrat39/symbols-outline.nvim",
+          cmd    = { "SymbolsOutline" },
+          config = function()
+            require("symbols-outline").setup()
+          end,
+          disable = false,
         }
       },
     }
