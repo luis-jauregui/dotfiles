@@ -22,14 +22,25 @@ local servers = {
   sumneko_lua = {
     settings = {
       Lua = {
-        diagnostics = {
-          globals = { 'vim' },
+
+        runtime = {
+          version = "LuaJIT",
+          path = vim.split(package.path, ";")
         },
+
+        diagnostics = {
+          globals = { "vim", "describe", "it", "before_each", "after_each", "packer_plugins" },
+        },
+
         workspace = {
           library = vim.api.nvim_get_runtime_file("", true),
-          checkThirdParty = false,
-          preloadFileSize = 500
+          maxPreload = 2000,
+          preloadFileSize = 50000
         },
+
+        completion = { callSnippet = "Both" },
+        telemetry = { enable = false }
+
       }
     }
   }
