@@ -17,7 +17,6 @@ local conf = {
 
 whichkey.setup(conf)
 
-
 local opts = {
   mode    = "n", -- Normal mode
   prefix  = "<leader>",
@@ -50,18 +49,12 @@ local function normal_keymap()
       -- g = { "<cmd>lua require('luis.utils.term').git_commit_toggle()<CR>", "Conventional Commit" },
     },
 
-    -- s = {
-    --   name = "Server",
-    --   a = { "<cmd>Ng<CR>", "Run Angular Server" },
-    --   l = { "<cmd>Live<CR>", "Run Live Server" },
-    --   v = { "<cmd>Run<CR>", "Run Vite Server" },
-    -- },
-
     b = {
       name = "Buffer",
-      t = { "<cmd>BDelete this<CR>", "Delete this current buffer" },
-      h = { "<cmd>BDelete hidden<CR>", "Delete all non-visible buffers" },
-      n = { "<cmd>BDelete nameless<CR>", "Delete buffers without name" },
+      t = { "<cmd>BDelete hidden<CR>", "Close Hidden Buffers" },
+      t = { "<cmd>BDelete this<CR>", "Close Buffer" },
+      h = { "<cmd>BDelete! this<CR>", "Force Close Buffer" },
+      n = { "<cmd>BDelete nameless<CR>", "Close Buffers Without Name" },
     },
 
     p = {
