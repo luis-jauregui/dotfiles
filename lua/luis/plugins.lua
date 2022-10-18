@@ -339,6 +339,7 @@ function M.setup()
 
     use { "chaoren/vim-wordmotion" }
 
+    use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" }, disable = false }
     use {
       "ggandor/lightspeed.nvim" ,
       keys = { "s", "S", "f", "F", "t", "T" },
