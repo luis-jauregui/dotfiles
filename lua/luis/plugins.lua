@@ -387,6 +387,7 @@ function M.setup()
 
     use { "tpope/vim-fugitive", cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" }, requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" } }
 
+    use { "rbong/vim-flog", cmd = { "Flog", "Flogsplit", "Floggit" }, wants = { "vim-fugitive" } }
     -- Performance
 
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
