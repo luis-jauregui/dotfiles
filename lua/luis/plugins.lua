@@ -345,7 +345,7 @@ function M.setup()
       cmd    = { "FocusToggle", "FocusMaxOrEqual" },
       module = "focus",
       config = function()
-        require("focus").setup { hybridnumber = true }
+        require("focus").setup { hybridnumber = false, number = false }
       end,
       disable = false,
     }
