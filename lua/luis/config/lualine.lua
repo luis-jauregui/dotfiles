@@ -11,12 +11,6 @@ function M.setup()
     return
   end
 
-  -- local ok2, gps = pcall(require, "nvim-gps")
-  -- if not ok2 then
-  --   utils.error_plugin("nvim-gps")
-  --   return
-  -- end
-
   lualine.setup {
 
     options = {
