@@ -215,7 +215,7 @@ function M.module()
     else
       cmd = input
     end
-    cmd = "ng g m " .. cmd .. "--flat --routing"
+    cmd = "ng g m " .. cmd .. " --flat --routing"
     M.open_term_angular(cmd, { direction = "float", close_on_exit = true })
   end)
 end
