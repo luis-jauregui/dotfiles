@@ -7,8 +7,7 @@ local rep = require("luasnip.extras").rep
 local i = ls.insert_node
 
 local snippets = {
-  s("clg", { t "console.log(", i(1), t ");", i(2) }),
-
+  s({ trig = "clg", name = "Log", dscr = "Log" }, { t "console.log(", i(1), t ");", i(2) }),
 }
 
 return snippets
