@@ -1,6 +1,5 @@
 local M = {}
 
-
 function M.setup()
 
   local utils = require "luis.utils"
@@ -21,7 +20,6 @@ function M.setup()
 
     highlight = {
       enable = true,
-      disable = {},
     },
 
     matchup = {
@@ -32,34 +30,33 @@ function M.setup()
       enable = true,
       config = {
         javascript = {
-          __default = '// %s',
-          jsx_element = '{/* %s */}',
-          jsx_fragment = '{/* %s */}',
+          __default     = '// %s',
+          jsx_element   = '{/* %s */}',
+          jsx_fragment  = '{/* %s */}',
           jsx_attribute = '// %s',
-          comment = '// %s'
+          comment       = '// %s'
         }
       }
     },
 
     indent = {
       enable = true,
-      -- disable = { "html" }
     },
 
     incremental_selection = {
-      enable = true,
+      enable  = true,
       keymaps = {
-        init_selection = "gnn",
-        node_incremental = "grn",
+        init_selection    = "gnn",
+        node_incremental  = "grn",
         scope_incremental = "grc",
-        node_decremental = "grm",
+        node_decremental  = "grm",
       },
     },
 
     refactor = {
       highlight_definitions = { enable = true },
       smart_rename = {
-        enable = true,
+        enable  = true,
         keymaps = {
           smart_rename = "gr",
         },
@@ -80,26 +77,32 @@ function M.setup()
           ["if"] = "@function.inner",
           ["ac"] = "@class.outer",
           ["ic"] = "@class.inner",
-        }
+        },
+
+        selection_modes = {
+          ["@parameter.outer"] = "v", -- charwise
+          ["@function.outer"]  = "V", -- linewise
+          ["@class.outer"]     = "<c-v>", -- blockwise
+        },
       }
     },
 
     playground = {
-      enable = true,
-      disable = {},
-      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+      enable          = true,
+      disable         = {},
+      updatetime      = 25, -- Debounced time for highlighting nodes in the playground from source code
       persist_queries = false, -- Whether the query persists across vim sessions
       keybindings = {
-        toggle_query_editor = 'o',
-        toggle_hl_groups = 'i',
+        toggle_query_editor       = 'o',
+        toggle_hl_groups          = 'i',
         toggle_injected_languages = 't',
-        toggle_anonymous_nodes = 'a',
-        toggle_language_display = 'I',
-        focus_language = 'f',
-        unfocus_language = 'F',
-        update = 'R',
-        goto_node = '<cr>',
-        show_help = '?',
+        toggle_anonymous_nodes    = 'a',
+        toggle_language_display   = 'I',
+        focus_language            = 'f',
+        unfocus_language          = 'F',
+        update                    = 'R',
+        goto_node                 = '<cr>',
+        show_help                 = '?',
       },
     }
   }
