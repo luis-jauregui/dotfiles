@@ -133,7 +133,7 @@ function M.open_browser()
 
       local cmd = ""
       if i == 1 then
-        cmd = ":lua require('luis.utils').search_browser_url()"
+        cmd = ":lua require('luis.utils').search_url()"
       elseif i == 2 then
         cmd = ":lua require('luis.utils').search_google()"
       elseif i == 3 then
