@@ -4,9 +4,9 @@ function M.setup()
 
   local signs = {
     Error = " ",
-    Warn = " ",
-    Hint = " ",
-    Info = " ",
+    Warn  = " ",
+    Hint  = " ",
+    Info  = " ",
   }
 
   for type, sign in pairs(signs) do
@@ -19,15 +19,15 @@ function M.setup()
 
     float = {
       focusable = true,
-      style = "minimal",
-      border = "rounded",
+      style     = "minimal",
+      border    = "rounded",
     },
 
     publishDiagnostics = {
-      underline = false,
+      underline        = false,
       update_in_insert = false,
-      virtual_text = { spacing = 4, prefix = "●"},
-      severity_sort = true,
+      virtual_text     = { spacing = 4, prefix = "●"},
+      severity_sort    = true,
     },
 
     diagnostic = {
@@ -44,6 +44,7 @@ function M.setup()
       underline = false,
 
       float = {
+        style  = "minimal",
         source = "always", -- Or "if_many"
         border = "rounded",
         header = "",
@@ -56,7 +57,7 @@ function M.setup()
   -- Diagnostic configuration
   vim.diagnostic.config(lsp.diagnostic)
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, lsp.publishDiagnostics)
+  -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, lsp.publishDiagnostics)
 
   -- Hover configuration
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, lsp.float)
