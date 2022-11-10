@@ -51,9 +51,8 @@ local function normal_keymap()
 
     b = {
       name = "Buffer",
-      t = { "<cmd>BDelete hidden<CR>", "Close Hidden Buffers" },
-      t = { "<cmd>BDelete this<CR>", "Close Buffer" },
-      h = { "<cmd>BDelete! this<CR>", "Force Close Buffer" },
+      h = { "<cmd>BDelete hidden<CR>", "Close Hidden Buffers" },
+      t = { "<cmd>BDelete! this<CR>", "Force Close Buffer" },
       n = { "<cmd>BDelete nameless<CR>", "Close Buffers Without Name" },
     },
 
