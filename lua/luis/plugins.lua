@@ -396,6 +396,21 @@ function M.setup()
     use { "tpope/vim-fugitive", cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" }, requires = { "tpope/vim-rhubarb", "idanarye/vim-merginal" } }
 
     use { "rbong/vim-flog", cmd = { "Flog", "Flogsplit", "Floggit" }, wants = { "vim-fugitive" } }
+    use {
+      "pwntester/octo.nvim",
+      cmd = "Octo",
+      wants = { "telescope.nvim", "plenary.nvim", "nvim-web-devicons" },
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+        "kyazdani42/nvim-web-devicons",
+      },
+      config = function()
+        require("octo").setup()
+      end,
+      disable = true,
+    }
+
     -- Performance
 
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
