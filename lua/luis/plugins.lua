@@ -337,6 +337,15 @@ function M.setup()
 
     use { "chaoren/vim-wordmotion" }
 
+    use {
+      'phaazon/hop.nvim',
+      opt = true,
+      keys = { [[<space><space>]] },
+      branch = 'v2',
+      config = function()
+        require('luis.config.hop').setup()
+      end
+    }
     use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" }, disable = false }
 
     use {
