@@ -64,7 +64,6 @@ function M.setup(servers, options)
         server = opts,
       }
     end
-
   }
 end
 

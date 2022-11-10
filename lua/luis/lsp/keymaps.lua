@@ -9,8 +9,15 @@ local function keymappings(client, bufnr)
 
   keymap('n', 'gD', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  -- keymap('n', 'gr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  -- keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+
+ --  keymap("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+	-- keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+	-- keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	-- keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
+	-- keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
+	-- keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	-- keymap("n", "gh", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	-- keymap("n", "gb", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 
   local keymap_l = {
     l = {
@@ -37,8 +44,6 @@ local function keymappings(client, bufnr)
   local o = { buffer = bufnr, prefix = "<leader>" }
   whichkey.register(keymap_l, o)
 
-  -- o = { buffer = bufnr, prefix = "g" }
-  -- whichkey.register(keymap_g, o, false)
 end
 
 function M.setup(client, bufnr)
