@@ -39,7 +39,17 @@ function M.setup()
 
       ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
-      ['<C-n>'] = cmp.mapping(function(fallback)
+      ["<C-l>"] = cmp.mapping {
+        i = function(fallback)
+          if luasnip.choice_active() then
+            luasnip.change_choice(1)
+          else
+            fallback()
+          end
+        end,
+      },
+
+      ['<S-l>'] = cmp.mapping(function(fallback)
         if luasnip.jumpable(1) then
           luasnip.jump(1)
         else
