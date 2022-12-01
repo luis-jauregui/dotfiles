@@ -10,12 +10,6 @@ function M.setup(servers, options)
     return
   end
 
-  local ok_neodev, neodev = pcall(require, "neodev")
-  if not ok_neodev then
-    utils.error_plugin("neodev")
-    return
-  end
-
   local ok_mason, mason = pcall(require, "mason")
   if not ok_mason then
     utils.error_plugin("mason")
@@ -52,7 +46,6 @@ function M.setup(servers, options)
 
     ["sumneko_lua"] = function()
       local opts = vim.tbl_deep_extend("force", options, servers["sumneko_lua"] or {})
-      neodev.setup({})
       lspconfig.sumneko_lua.setup(opts)
     end,
 

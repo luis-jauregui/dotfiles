@@ -68,7 +68,6 @@ function M.setup()
         "mason.nvim",
         "mason-tool-installer.nvim",
         "mason-lspconfig.nvim",
-        "neodev.nvim",
         "typescript.nvim",
         "nvim-navic",
         "symbols-outline.nvim",
@@ -81,7 +80,6 @@ function M.setup()
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         "williamboman/mason-lspconfig.nvim",
         "jose-elias-alvarez/null-ls.nvim",
-        "folke/neodev.nvim",
         "jose-elias-alvarez/typescript.nvim",
         {
           "ray-x/lsp_signature.nvim",
