@@ -41,7 +41,10 @@ function M.setup()
       },
 
       update_in_insert = false,
-      underline = false,
+
+      underline = {
+        severity_limit = "Warning"
+      },
 
       float = {
         style  = "minimal",

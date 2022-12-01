@@ -49,19 +49,21 @@ local servers = {
 
 function M.on_attach(client, bufnr)
 
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  if client.server_capabilities.completionProvider then
+    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+		vim.bo[bufnr].completefunc = "v:lua.vim.lsp.omnifunc"
+  end
 
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+  if client.server_capabilities.definitionProvider then
+		vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
+	end
+
+  if client.server_capabilities.documentFormattingProvider then
+		vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr()"
+	end
 
   require('luis.lsp.keymaps').setup(client, bufnr)
   require('luis.lsp.null-ls.formatters').setup(client, bufnr)
-
-
-  if client.server_capabilities.definitionProvider then
-    vim.api.nvim_buf_set_option(bufnr, "tagfunc", "v:lua.vim.lsp.tagfunc")
-  end
 
   -- navic
   if client.server_capabilities.documentSymbolProvider then
