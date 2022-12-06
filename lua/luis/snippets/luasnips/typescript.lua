@@ -1,13 +1,7 @@
 local ls = require "luasnip"
-local s = ls.snippet
+-- local s = ls.snippet
 local t = ls.text_node
-
-local fmt = require("luasnip.extras.fmt").fmt
-local rep = require("luasnip.extras").rep
-local i = ls.insert_node
-
-local sn = ls.snippet_node
-local d = ls.dynamic_node
+local s = ls.snippet
 
 local snippets = {
   s({ trig = "clg", name = "Log", dscr = "Log" }, { t "console.log(", i(1), t ");", i(2) }),
