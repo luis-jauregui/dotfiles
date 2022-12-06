@@ -39,16 +39,6 @@ function M.setup()
 
       ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
-      ["<C-l>"] = cmp.mapping {
-        i = function(fallback)
-          if luasnip.choice_active() then
-            luasnip.change_choice(1)
-          else
-            fallback()
-          end
-        end,
-      },
-
       ['<S-l>'] = cmp.mapping(function(fallback)
         if luasnip.jumpable(1) then
           luasnip.jump(1)
@@ -84,12 +74,13 @@ function M.setup()
       -- completion = cmp.config.window.bordered()
     },
 
-    sources = {
-      { name = "nvim_lsp" },
-      { name = "luasnip" },
-      { name = "path" },
-      { name = "buffer" },
-    },
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+    }, {
+        { name = "buffer" },
+        { name = "path" },
+    }),
 
     formatting = {
       format = lspkind.cmp_format({
@@ -103,13 +94,19 @@ function M.setup()
       ghost_text = false,
     },
 
-  }
+    sorting = {
+      comparators = {
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      }
+    }
 
-  cmp.setup.cmdline("/", {
-    sources = {
-      { name = "buffer" },
-    },
-  })
+  }
 
 end
 
