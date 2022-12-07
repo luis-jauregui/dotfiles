@@ -8,7 +8,6 @@ end
 dressing.setup({
   input = {
     relative = "editor",
-    winblend = 100,
     mappings = {
       n = {
         ["q"]    = "Close",
